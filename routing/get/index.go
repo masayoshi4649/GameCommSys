@@ -26,11 +26,11 @@ var lang Lang
 // Index ... GET index.html
 func Index(ctx *gin.Context) {
 
-	jsonFromFile, err := ioutil.ReadFile("./lang/index.json")
+	labeljson, err := ioutil.ReadFile("./lang/index.json")
 	if err != nil {
 		panic(err)
 	}
-	json.Unmarshal(jsonFromFile, &lang)
+	json.Unmarshal(labeljson, &lang)
 
 	fmt.Println(lang.Ja.Label1)
 	fmt.Println(lang.En.Label1)
