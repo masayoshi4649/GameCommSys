@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "ja": {
         "label1": "ああああ",
@@ -9,4 +10,17 @@
         "label2": "iii",
         "lanel3": "u"
     }
+=======
+{
+    "ja": {
+        "label1": "あああ",
+        "label2": "いい",
+        "label3": "う"
+    },
+    "en": {
+        "label1": "aaa",
+        "label2": "ii",
+        "lanel3": "u"
+    }
+>>>>>>> aa82d0f011fa211fa55d4f42203f47e55798ad78
 }
