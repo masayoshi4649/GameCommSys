@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {{ template "header" . }}
+    {{ template "footer" . }}
+    <div class="content">
+        ログイン</h2>
+        <button id="submitbutton" type="submit"
+            onclick="location.href='https://discord.com/api/oauth2/authorize?client_id=764483773567467550&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Floginprocessing&response_type=code&scope=identify%20email'">ログイン</button>
+    </div>
+</body>
+
+</html>
