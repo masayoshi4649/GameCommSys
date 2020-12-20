@@ -8,7 +8,7 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-// Label ...
+// Label ... getting labelData
 type Label struct {
 	method int
 	uri    string
@@ -16,17 +16,19 @@ type Label struct {
 	label  string
 }
 
-// Selectsqlite3 ... SQLite3 Controler RETURN 1ROW
-func Selectsqlite3(query string) string {
+// Datalabel ... SQLite3 Controler RETURN 1ROW
+func Datalabel(uri string, lang int) string {
+
+	query := "SELECT label FROM mst_label WHERE method = 1 AND uri = ? AND mst_label.lang = ?;"
 	sqlite3db, err := sql.Open("sqlite3", "./lang.sqlite3")
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer sqlite3db.Close()
 
-	row := sqlite3db.QueryRow(query)
+	row := sqlite3db.QueryRow(query, uri, lang)
 
 	var l Label
-	row.Scan(&l.method, &l.uri, &l.lang, &l.label)
+	row.Scan(&l.label)
 	return l.label
 }

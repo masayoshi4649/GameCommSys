@@ -8,13 +8,18 @@
 </head>
 
 <body>
-    {{ template "header" . }}
-    {{ template "footer" . }}
+    <!-- {{ template "header" . }}
+    {{ template "footer" . }} -->
     <div class="content">
         ログイン</h2>
-        <button id="submitbutton" type="submit"
-            onclick="location.href='https://discord.com/api/oauth2/authorize?client_id=764483773567467550&redirect_uri=http%3A%2F%2Fdev.masayoshi4649.top%3A8080%2Floginprocessing&response_type=code&scope=identify%20email'">ログイン</button>
+        <input type="button" id="discordLogin" onclick="discordRedirect();">ログイン</button>
     </div>
 </body>
+<script>
+    const uristring = "{{.discordURL}}";
+    function discordRedirect() {
+        location.href = uristring
+    }
+</script>
 
 </html>
