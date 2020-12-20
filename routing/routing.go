@@ -8,6 +8,7 @@ import (
 // LoadInitial ... "common"
 func LoadInitial(router *gin.Engine) {
 	router.StaticFile("/favicon.ico", "common/favicon.ico")
+	router.Static("/src/css", "view/css")
 	router.LoadHTMLGlob("view/*.html")
 
 }

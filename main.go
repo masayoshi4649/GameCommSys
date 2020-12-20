@@ -31,7 +31,6 @@ func main() {
 	store := cookie.NewStore([]byte("secret"))
 	router.Use(sessions.Sessions(serverGeneral.SessionName, store))
 
-	// createsession(ctx * gin.Context)
 	routing.LoadInitial(router)
 	routing.LoadGet(router)
 	routing.LoadPost(router)
