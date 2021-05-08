@@ -2,7 +2,7 @@ package routing
 
 import (
 	"github.com/gin-gonic/gin"
-	"local.packages/routing/get"
+	"github.com/masayoshi4649/GameCommSys/routing/get"
 )
 
 // LoadInitial ... "common"
