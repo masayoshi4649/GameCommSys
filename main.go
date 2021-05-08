@@ -1,11 +1,12 @@
 package main
 
 import (
+	"main/commontools"
+	"main/routing"
+
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
-	"github.com/masayoshi4649/GameCommSys/commontools"
-	"github.com/masayoshi4649/GameCommSys/routing"
 )
 
 // ミドルウェアGin宣言

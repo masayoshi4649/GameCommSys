@@ -1,11 +1,11 @@
 package get
 
 import (
-	"GameCommSys/generaltools"
 	"bytes"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"main/commontools"
 	"net/http"
 
 	"github.com/gin-contrib/sessions"
@@ -40,10 +40,10 @@ type Discordtoken struct {
 
 func getToken(code string) {
 
-	var clientID string = generaltools.Fixedparam("clientID")
-	var clientSecret string = generaltools.Fixedparam("clientSecret")
+	var clientID string = commontools.Fixedparam("clientID")
+	var clientSecret string = commontools.Fixedparam("clientSecret")
 
-	var redirectURI string = generaltools.Fixedparam("myhostname") + "loginprocessing"
+	var redirectURI string = commontools.Fixedparam("myhostname") + "loginprocessing"
 	// make HTTP Client
 	client := &http.Client{}
 

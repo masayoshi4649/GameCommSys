@@ -1,6 +1,7 @@
 package get
 
 import (
+	"main/commontools"
 	"net/url"
 	"strings"
 
@@ -10,9 +11,9 @@ import (
 // Login ... GET login.html FOR DEBUG
 func Login(ctx *gin.Context) {
 	labelmap := make(map[string]interface{})
-	var discordURI string = Fixedparam("discordURI")
-	discordURI = strings.Replace(discordURI, "【clientID】", Fixedparam("clientID"), -1)
-	var redirectURI string = Fixedparam("myhostname") + "loginprocessing"
+	var discordURI string = commontools.Fixedparam("discordURI")
+	discordURI = strings.Replace(discordURI, "【clientID】", commontools.Fixedparam("clientID"), -1)
+	var redirectURI string = commontools.Fixedparam("myhostname") + "loginprocessing"
 	discordURI = strings.Replace(discordURI, "【enc_redirect_uri】", url.QueryEscape(redirectURI), -1)
 
 	labelmap["discordURL"] = discordURI

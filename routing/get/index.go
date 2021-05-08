@@ -2,6 +2,7 @@ package get
 
 import (
 	"encoding/json"
+	"main/commontools"
 
 	"github.com/gin-gonic/gin"
 )
@@ -10,7 +11,7 @@ import (
 func Index(ctx *gin.Context) {
 	var uri string = "index"
 	lang := 1
-	var label string = Datalabel(uri, lang)
+	var label string = commontools.Datalabel(uri, lang)
 
 	var labelmap map[string]interface{}
 	json.Unmarshal([]byte(label), &labelmap)
