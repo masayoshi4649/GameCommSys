@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- {{ template "header" . }}
+    {{ template "footer" . }} -->
+    <div class="content">
+        ログイン</h2>
+        <input type="button" id="discordLogin" onclick="discordRedirect();">ログイン</button>
+    </div>
+</body>
+<script>
+    const uristring = "{{.discordURL}}";
+    function discordRedirect() {
+        location.href = uristring;
+    }
+</script>
+
+</html>

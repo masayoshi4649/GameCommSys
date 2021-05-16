@@ -1,4 +1,4 @@
-package get
+package routing
 
 import (
 	"bytes"
@@ -15,6 +15,8 @@ import (
 // LoginProcessing ... GET loginprocessing
 func LoginProcessing(ctx *gin.Context) {
 	session := sessions.Default(ctx)
+
+	var discordid string
 	fmt.Println("**************************************session.Get(ID)")
 	fmt.Println(session.Get("ID"))
 
@@ -23,8 +25,9 @@ func LoginProcessing(ctx *gin.Context) {
 	fmt.Println(code)
 
 	if code != "" {
-		getToken(code)
+		discordid = getToken(code)
 	}
+	commontools.LoginFuncion(ctx, discordid)
 	ctx.Redirect(303, "/")
 
 }
@@ -38,7 +41,7 @@ type Discordtoken struct {
 	TokenType    string `json:"token_type"`
 }
 
-func getToken(code string) {
+func getToken(code string) (userid string) {
 
 	var clientID string = commontools.Fixedparam("clientID")
 	var clientSecret string = commontools.Fixedparam("clientSecret")
@@ -70,8 +73,10 @@ func getToken(code string) {
 	var discordtoken Discordtoken
 	json.Unmarshal(bytes, &discordtoken)
 
-	getMe(discordtoken.AccessToken, discordtoken.TokenType)
+	userdata := getMe(discordtoken.AccessToken, discordtoken.TokenType)
+	fmt.Println(userdata.ID)
 
+	return userdata.ID
 }
 
 // DiscordMe ... {"id": "_____", "username": "_____", "avatar": "_____", "discriminator": "____", "public_flags": 0, "flags": 0, "email": "_____", "verified": true, "locale": "ja", "mfa_enabled": false}
@@ -88,7 +93,7 @@ type DiscordMe struct {
 	MfaEnabled    bool   `json:"mfa_enabled"`
 }
 
-func getMe(accessToken string, tokenType string) {
+func getMe(accessToken string, tokenType string) (userdata DiscordMe) {
 	// make HTTP Client
 	client := &http.Client{}
 
@@ -113,8 +118,6 @@ func getMe(accessToken string, tokenType string) {
 	bytes := []byte(body)
 	var discordMe DiscordMe
 	json.Unmarshal(bytes, &discordMe)
-
-	fmt.Println("**************************************discordMe")
-	fmt.Println(discordMe)
-
+	// fmt.Println(discordMe)
+	return discordMe
 }

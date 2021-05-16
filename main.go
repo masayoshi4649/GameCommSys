@@ -15,6 +15,7 @@ var router *gin.Engine = gin.Default()
 func main() {
 	store := cookie.NewStore([]byte("secret"))
 	router.Use(sessions.Sessions(commontools.Fixedparam("sessionName"), store))
+	// router.Use(commontools.SampleMiddleware())
 
 	routing.LoadInitial(router)
 	routing.LoadGet(router)

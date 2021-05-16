@@ -1,14 +1,12 @@
 package routing
 
 import (
-	"main/routing/get"
-
 	"github.com/gin-gonic/gin"
 )
 
 // LoadInitial ... "common"
 func LoadInitial(router *gin.Engine) {
-	router.StaticFile("/favicon.ico", "common/favicon.ico")
+	router.StaticFile("/favicon.ico", "view/favicon.ico")
 	router.Static("/src/css", "view/css")
 	router.LoadHTMLGlob("view/*.html")
 
@@ -16,9 +14,10 @@ func LoadInitial(router *gin.Engine) {
 
 // LoadGet ... GET Request
 func LoadGet(router *gin.Engine) {
-	router.GET("/", get.Index)
-	router.GET("/login", get.Login)
-	router.GET("/loginprocessing", get.LoginProcessing)
+	router.GET("/", Index)
+	router.GET("/login", Login)
+	router.GET("/loginprocessing", LoginProcessing)
+	router.GET("/logout", Logout)
 }
 
 // LoadPost ... POST Request
